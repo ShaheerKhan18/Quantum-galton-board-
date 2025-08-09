@@ -5,9 +5,6 @@ from qiskit import QuantumCircuit
 def Game(l):
     #m number of qubit needed
     m = 0
-    phi = 0
-    lam = 0
-    theta = 3
     for i in range(1, l + 1):
         if i == 1:
             m = 4
@@ -22,7 +19,7 @@ def Game(l):
     for j in range(1, l):
         #reset and hadamard for each level
         qc.reset(0)
-        qc.u(theta, phi, lam, 0)
+        qc.h(0)
 
         for i in range(j, 0, -2):
             if (k + i - 1)!= k:
@@ -41,7 +38,7 @@ def Game(l):
                 qc.cswap(0, k, k - 1)
     if l > 2:
         qc.reset(0)
-        qc.u(theta, phi, lam, 0)
+        qc.h(0)
         for i in range(1, m - 2):
             if i%2 != 0:
                 qc.cswap(0, i, i + 1)
@@ -49,8 +46,7 @@ def Game(l):
                 qc.cswap(0, i + 1, i + 2)
                 if i + 1 != m - 2:
                     qc.cx(i + 2, 0)
-                    
-    
+ 
     cbit = 0          
     for i in range(m):      
         if i%2 != 0:
@@ -59,7 +55,7 @@ def Game(l):
            
     return qc
 
-qc = Game(6)
+qc = Game(4)
 #View the circuit as plain text (no matplotlib needed)
 #print(qc.draw(output='text'))
 
