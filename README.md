@@ -16,8 +16,10 @@ We started by analyzing the level 1 and 2 of the QGB. Each peg in QGB is modelle
 
 We wrote a Python function Game(l) that dynamically builds a QGB circuit for any number of layers l. For a QGB of l levels, the circuit requires l Hadamard gates and l reset gates (to initialize the ancilla at each level), along with a single X gate to place the “ball” in motion. Each “peg” in the board structure needs 4 gates, and since the number of pegs grows as a triangle number, this contributes a total of 2l(l + 1) gates. To measure we need l + 1 measurement gates. The total bound for this theoretical model requries n^2 + 5n + 2 gates.
 
+A Hadamard quantum walk is the quantum version of a classical random walk, where a “coin” qubit defines whether to move left or right. In contrast to a classical walk's Gaussian distribution, the quantum version yields a distribution with sharp peaks near the edges and much lower probabilities in the center due to quantum interference. We implemented this with a Galton-board–style quantum circuit: a coin qubit is rotated Hadamard-like at each level, followed by controlled swap gates to shift a position qubit. After a number of levels, a position register was measured and the results computed in order to derive position probabilities. This revealed the characteristic tall-edge, low-center shape of the Hadamard walk distribution.
+#### 333 words till now. yet to add Gaussian, exponential, hadamard random walk distribution. 
 
-#### 333 words till now. yet to add Gaussian, exponential, hadamard random walk distribution. ####
+
 
 
 # Project Presentation
