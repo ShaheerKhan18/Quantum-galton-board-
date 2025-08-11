@@ -158,7 +158,7 @@ def Game(l):
            
     return qc
 
-qc = Game(6)
+qc = Game(10)
 #View the circuit as plain text (no matplotlib needed)
 #print(qc.draw(output='text'))
 
